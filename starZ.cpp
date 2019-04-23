@@ -1,5 +1,10 @@
 // starZ.cpp   A demonstration of ASCII Art printing C characters
-
+// Drew Gillespie 9547183
+// 4/23/19
+// The programs makes a Z using the character *. It takes on only the width
+// parameter. It makes use of the variables for space before and after the
+// singular * that makes up the diagonal in the Z. Inputting -1 runs a series
+// of test.
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -9,15 +14,41 @@ void assertEquals(string expected, string actual, string message);
 string starZ(int width);
 void runTests(void);
 
-// Write starZ per specifictions at 
-// https://foo.cs.ucsb.edu/16wiki/index.php/F14:Labs:lab04
-// and so that internal tests pass, and submit.cs system tests pass
+
 
 
 string starZ(int width)
 {
   string result="";
-  result = "stub"; // TODO: remove this line, replace with correct code
+  if (width>=3){
+    int height=width-2;
+    for(int i=1;i<=width;i++){
+      result += "*";
+    }
+    result += "\n";
+    int n_whitebefore=width-2;
+    int n_whiteafter=1;
+    for (int i=1;i<=height;i++){
+      for(int i=1;i<=n_whitebefore;i++){
+	result += " ";
+      }
+      result += "*";
+      for(int i=1; i<=n_whiteafter;i++){
+	result += " ";
+      }
+      result += "\n";
+      n_whiteafter=n_whiteafter+1;
+      n_whitebefore=n_whitebefore-1;
+    }
+    for(int i=1;i<=width;i++){
+      result += "*";
+    }
+    result += "\n";
+      
+  }
+  else{return "";}
+  
+    
   return result;
 }
 
@@ -25,9 +56,6 @@ string starZ(int width)
 
 void runTests(void) {
 
-  // The following line works because in C and C++ when string literals
-  // are separated only by whitespace (space, tab, newline), they 
-  // automatically get concatenated into a single string literal
 
   string starZ3Expected = 
     "***\n"
@@ -63,18 +91,35 @@ void assertEquals(string expected, string actual, string message="") {
 
 int main(int argc, char *argv[])
 {
+  if (argc !=2){
+    cerr<<"Usage: "<<argv[0]<<" width";
+    exit(1);
+  }
+  int w=atoi(argv[1]);
+  if (w==-1){
 
-  // TODO: Add check for parameter
-  // and code to print usage message
+    string starZ3Expected = 
+    "***\n"
+    " * \n"
+    "***\n";
+  
+  assertEquals(starZ3Expected,starZ(3),"starZ(3)");
 
-  // TODO: Add code to get width from cmd line arg
-  // code that checks if it is -1; if so, call runTests()
-  // then exit.
+  string starZ4Expected = 
+    "****\n"
+    "  * \n"
+    " *  \n"
+    "****\n";
+  
+  assertEquals(starZ4Expected,starZ(4),"starZ(4)");
 
-  runTests();
+  assertEquals("",starZ(0),"starZ(0)");
+  assertEquals("",starZ(2),"starZ(2)");
+  }
+  else{cout<<starZ(w);
+  }
 
-  // TODO: Add code that calls the starZ function and prints
-  // the result on cout (without an extra newline)
+
 
   return 0;
 }

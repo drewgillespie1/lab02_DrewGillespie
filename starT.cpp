@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 {
 
   if (argc !=3){
-    cerr<<"no\n";
+    cerr<<"Usage: "<<argv[0]<<" width height";
     exit(1);
   }
   int w = atoi(argv[1]);

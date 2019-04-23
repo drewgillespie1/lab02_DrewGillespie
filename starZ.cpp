@@ -1,4 +1,4 @@
-// starT.cpp   A demonstration of ASCII Art printing T characters
+// starZ.cpp   A demonstration of ASCII Art printing C characters
 
 #include <iostream>
 #include <cstdlib>
@@ -6,13 +6,15 @@
 using namespace std;
 
 void assertEquals(string expected, string actual, string message);
-string starT(int width, int height);
+string starZ(int width);
 void runTests(void);
 
-// Write starT per specifictions in the lab writeup
-// so that internal tests pass, and submit.cs system tests pass
+// Write starZ per specifictions at 
+// https://foo.cs.ucsb.edu/16wiki/index.php/F14:Labs:lab04
+// and so that internal tests pass, and submit.cs system tests pass
 
-string starT(int width, int height)
+
+string starZ(int width)
 {
   string result="";
   result = "stub"; // TODO: remove this line, replace with correct code
@@ -27,31 +29,23 @@ void runTests(void) {
   // are separated only by whitespace (space, tab, newline), they 
   // automatically get concatenated into a single string literal
 
-  string starT34Expected = 
+  string starZ3Expected = 
     "***\n"
     " * \n"
-    " * \n"
-    " * \n" ;
+    "***\n";
   
-  assertEquals(starT34Expected,starT(3,4),"starT(3,4)");
+  assertEquals(starZ3Expected,starZ(3),"starZ(3)");
 
-  string starT53Expected =     
-    "*****\n"
-    "  *  \n"
-    "  *  \n" ;
+  string starZ4Expected = 
+    "****\n"
+    "  * \n"
+    " *  \n"
+    "****\n";
   
-  assertEquals(starT53Expected,starT(5,3),"starT(5,3)");
+  assertEquals(starZ4Expected,starZ(4),"starZ(4)");
 
-  string starT72Expected =     
-    "*******\n"
-    "   *   \n";
-  
-  assertEquals(starT72Expected,starT(7,2),"starT(7,2)");
-
-  assertEquals("",starT(1,2),"starT(1,2)");
-  assertEquals("",starT(5,1),"starT(5,1)");
-  assertEquals("",starT(4,2),"starT(4,2)");
-  assertEquals("",starT(6,2),"starT(6,2)");
+  assertEquals("",starZ(0),"starZ(0)");
+  assertEquals("",starZ(2),"starZ(2)");
 }
 
 // Test harness
@@ -70,16 +64,16 @@ void assertEquals(string expected, string actual, string message="") {
 int main(int argc, char *argv[])
 {
 
-  // TODO: Add check for parameters
+  // TODO: Add check for parameter
   // and code to print usage message
 
-  // TODO: Add code to get width and height from command line args
-  // code that checks if they are both -1; if so, call runTests()
+  // TODO: Add code to get width from cmd line arg
+  // code that checks if it is -1; if so, call runTests()
   // then exit.
 
   runTests();
 
-  // TODO: Add code that calls the starT function and prints
+  // TODO: Add code that calls the starZ function and prints
   // the result on cout (without an extra newline)
 
   return 0;
